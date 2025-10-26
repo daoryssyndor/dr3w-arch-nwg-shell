@@ -1,0 +1,107 @@
+# HTML + TailwindCSS
+[[language]]
+name = "html"
+language-servers = ["html-languageserver", "tailwindcss"]
+formatter = { command = "prettier", args = ["--parser", "html"] }
+auto-format = true
+
+[language-server.html-languageserver]
+command = "html-languageserver"
+args = ["--stdio"]
+
+[language-server.tailwindcss]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+# CSS
+[[language]]
+name = "css"
+language-servers = ["vscode-css-language-server"]
+formatter = { command = "prettier", args = ["--parser", "css"] }
+auto-format = true
+
+[language-server.vscode-css-language-server]
+command = "vscode-css-language-server"
+args = ["--stdio"]
+
+# JavaScript
+[[language]]
+name = "javascript"
+language-servers = ["vscode-eslint-language-server", "typescript-language-server"]
+formatter = { command = "prettier", args = ["--parser", "babel"] }
+auto-format = true
+
+# TypeScript
+[[language]]
+name = "typescript"
+language-servers = ["vscode-eslint-language-server", "typescript-language-server"]
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+auto-format = true
+
+[language-server.vscode-eslint-language-server]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+# Rust
+[[language]]
+name = "rust"
+language-servers = ["rust-analyzer"]
+formatter = { command = "rustfmt", args = ["--emit=stdout"] }
+auto-format = true
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+# Python
+[[language]]
+name = "python"
+language-servers = ["pyright"]
+formatter = { command = "black", args = ["--quiet", "-"] }
+auto-format = true
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+# JSON
+[[language]]
+name = "json"
+language-servers = ["vscode-json-language-server"]
+formatter = { command = "prettier", args = ["--parser", "json"] }
+auto-format = true
+
+[language-server.vscode-json-language-server]
+command = "vscode-json-language-server"
+args = ["--stdio"]
+
+# Markdown
+[[language]]
+name = "markdown"
+formatter = { command = "prettier", args = ["--parser", "markdown"] }
+auto-format = true
+
+# TOML
+[[language]]
+name = "toml"
+language-servers = ["taplo"]
+formatter = { command = "taplo", args = ["format", "--stdin"] }
+auto-format = true
+
+[language-server.taplo]
+command = "taplo"
+args = ["lsp", "stdio"]
+
+# YAML
+[[language]]
+name = "yaml"
+language-servers = ["yaml-language-server"]
+formatter = { command = "prettier", args = ["--parser", "yaml"] }
+auto-format = true
+
+[language-server.yaml-language-server]
+command = "yaml-language-server"
+args = ["--stdio"]

@@ -1,0 +1,35 @@
+# ~/.config/helix/config.toml
+theme = "kanagawa"
+
+[editor.file-picker]
+hidden = true
+
+# Ctrl-Y, потом y/v/h
+[keys.normal."C-y"]
+y = [
+  ':sh rm -f /tmp/hx-yazi',
+  ':insert-output echo -ne "\x1b[?1049l\x1b[?2004l" > /dev/tty',
+  ':insert-output yazi . --chooser-file=/tmp/hx-yazi',
+  ':insert-output echo -ne "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':open %sh(head -n1 /tmp/hx-yazi)',
+  ':redraw',
+]
+v = [
+  ':sh rm -f /tmp/hx-yazi',
+  ':insert-output echo -ne "\x1b[?1049l\x1b[?2004l" > /dev/tty',
+  ':insert-output yazi . --chooser-file=/tmp/hx-yazi',
+  ':insert-output echo -ne "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':vsplit %sh(head -n1 /tmp/hx-yazi)',
+  ':redraw',
+]
+h = [
+  ':sh rm -f /tmp/hx-yazi',
+  ':insert-output echo -ne "\x1b[?1049l\x1b[?2004l" > /dev/tty',
+  ':insert-output yazi . --chooser-file=/tmp/hx-yazi',
+  ':insert-output echo -ne "\x1b[?1049h\x1b[?2004h" > /dev/tty',
+  ':hsplit %sh(head -n1 /tmp/hx-yazi)',
+  ':redraw',
+]
+
+[keys.normal]
+F5 = ":sh ~/.local/bin/cargo-run-term.sh\n"
