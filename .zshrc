@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # --- Oh My Zsh core ---
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -28,7 +35,6 @@ source "$ZSH/oh-my-zsh.sh"
 
 # Aliases
 alias ll='ls -la'
-alias y='yazi'
 alias hx='helix'
 alias c='clear'
 alias fo='hx "$(fzf)"'
@@ -53,3 +59,22 @@ HIGHL_PLUGIN="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highligh
 [[ -r "$HIGHL_PLUGIN" ]] && source "$HIGHL_PLUGIN"
 export ELECTRON_TRUST_STORE=0
 export VSCODE_CREDENTIAL_SERVICE=plaintext
+
+#yazi CWD
+# --- Yazi CWD jump ---
+unalias y 2>/dev/null       # remove any alias set earlier (OMZ/plugins)
+
+y() {
+  local tmp cwd
+  tmp="$(mktemp -t yazi-cwd.XXXXXX)"
+  command yazi "$@" --cwd-file="$tmp"
+  cwd="$(<"$tmp")"
+  rm -f -- "$tmp"
+  [[ -n "$cwd" && "$cwd" != "$PWD" ]] && cd -- "$cwd"
+}
+
+# optional: shows up in `alias`, doesn't affect calls (function wins)
+alias y='y'
+
+export PATH="$HOME/.local/bin:$PATH"
+export GOOSE_DISABLE_KEYRING=1
