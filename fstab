@@ -1,0 +1,23 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p2
+UUID=2769cf92-e86e-4957-a1ff-428bb4e1aa03	/         	ext4      	rw,relatime	0 1
+
+# /dev/nvme0n1p1
+UUID=AA51-73A7      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/nvme0n1p3
+UUID=5646da99-46db-4242-9011-e4a9b75a5675	/home     	ext4      	rw,relatime	0 2
+
+# ---- EXTRA DISKS ----
+
+# NVMe secondary drive
+UUID=42da895d-83d2-43d4-a83f-5b16a8dad3df  /mnt/nvme1       ext4     defaults,noatime,x-systemd.automount,nofail  0 2
+
+# SSDs / HDDs (NTFS)
+UUID=E2A2D81FA2D7F5CF  /mnt/KC600         ntfs-3g  uid=1000,gid=1000,umask=022,windows_names,big_writes,x-systemd.automount,nofail  0 0
+UUID=E228DD4128DD157F  /mnt/WRK           ntfs-3g  uid=1000,gid=1000,umask=022,windows_names,big_writes,x-systemd.automount,nofail  0 0
+UUID=D070EB4E70EB39BC  /mnt/_DEPO         ntfs-3g  uid=1000,gid=1000,umask=022,windows_names,big_writes,x-systemd.automount,nofail  0 0
+UUID=FA2E64202E63D3E3  /mnt/_SiliconSSD   ntfs-3g  uid=1000,gid=1000,umask=022,windows_names,big_writes,x-systemd.automount,nofail  0 0
