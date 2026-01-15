@@ -1,0 +1,18 @@
+# secrets / auth
+gh/hosts.yml
+**/*.pem
+**/*.key
+pulse/cookie
+
+# logs / telemetry
+obs-studio/logs/
+obs-studio/profiler_data/
+go/telemetry/
+tool_state
+
+
+# GitHub CLI auth (contains tokens)
+gh/hosts.yml
+
+# GitHub CLI auth (contains tokens)
+gh/hosts.yml
