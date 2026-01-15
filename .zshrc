@@ -42,6 +42,22 @@ alias fo='hx "$(fzf)"'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git 2>/dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+export FZF_CTRL_T_COMMAND='{
+  fd --type f --hidden --follow --exclude .git "$HOME/___w" 2>/dev/null
+  fd --type f --hidden --follow --exclude .git . 2>/dev/null
+}'
+#---priotirize dirs--- ALT+C---
+export FZF_ALT_C_COMMAND='{
+  fd --type d --hidden --follow --exclude .git "$HOME/___w" 2>/dev/null
+  fd --type d --hidden --follow --exclude .git . 2>/dev/null
+}'
+
+# --- visually distinct ___w folder ---
+export FZF_CTRL_T_OPTS='
+  --ansi
+  --color=fg:#c0c0c0,hl:#ffaf00
+'
+
 # --- Extra keybinds ---
 # accept autosuggestion by word
 bindkey '^ ' autosuggest-accept         # Ctrl+Space
@@ -75,6 +91,15 @@ y() {
 
 # optional: shows up in `alias`, doesn't affect calls (function wins)
 alias y='y'
+alias z='zoxide'
 
 export PATH="$HOME/.local/bin:$PATH"
 export GOOSE_DISABLE_KEYRING=1
+export EDITOR=helix
+alias yay='env -u NO_PROXY -u no_proxy HTTPS_PROXY=socks5h://127.0.0.1:9050 HTTP_PROXY=socks5h://127.0.0.1:9050 ALL_PROXY=socks5h://127.0.0.1:9050 yay'
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export EDITOR=helix
+export VISUAL=helix
