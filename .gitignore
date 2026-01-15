@@ -16,3 +16,6 @@ gh/hosts.yml
 
 # GitHub CLI auth (contains tokens)
 gh/hosts.yml
+
+# nested repos / tools
+nvm/
