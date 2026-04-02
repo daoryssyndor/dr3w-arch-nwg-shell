@@ -26,6 +26,7 @@ F5 = ':sh ~/.local/bin/cargo-run-term.sh'
 "A-l" = ["extend_to_line_bounds", "trim_selections"]
 "C-l" = ':sh cargo clippy --all-targets --all-features -- -D warnings'
 "C-f" = ':sh cargo fmt'
+"A-s" = "@A<space><esc>"
 
 "A-right" = ["select_mode", "move_next_word_start"]
 "A-left" = ["select_mode", "move_prev_word_start"]
